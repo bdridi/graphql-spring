@@ -1,0 +1,25 @@
+type Capsule {
+    id: ID!
+    serial: String!
+    status: String!
+    originalLaunch: String
+    flight: String
+    type: String
+}
+
+type Mission {
+    id: ID!
+    manufacturer: String!
+    name: String!
+    website: String,
+    capsules: [Capsule]
+}
+
+type Query {
+    recentMissions(count: Int, offset: Int): [Mission]!
+    getMissionById(id: String!): Mission!
+}
+
+type Mutation {
+    createMission(name: String!, manufacturer: String!, website: String) : Mission!
+}
